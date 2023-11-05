@@ -19,7 +19,13 @@ function onGuess(){
     info.forEach((value, i) => {
         const newBox = document.createElement("div");
         newBox.className = "box";
-        newBox.innerHTML = value;
+        if(i === 5)
+            newBox.innerHTML += "Year ";
+        newBox.innerHTML += value;
+        if(!(info[0] === "Nokk") && i === 8)
+            newBox.innerHTML += " m";
+        if(!(info[0] === "Nokk") && i === 9)
+            newBox.innerHTML += " kgs";
         if(value === answerInfo[i]) {
             newBox.innerHTML += " ✓";
             newBox.className += " green";
@@ -34,22 +40,26 @@ function onGuess(){
                 newBox.innerHTML += " X";
                 newBox.className += " red";
             }
-        } else if (i === 5 || i === 6 || i == 7) {
+        } else if (i === 5 || i === 8 || i === 9 || i == 10) {
             if(value < answerInfo[i]) {
                 newBox.innerHTML += " ↑";
                 newBox.className += " red";
             } else {
-                newBox.innerHTML += " ↓";
+                if(!(info[0] === "Nokk" && (i === 8 || i === 9 || i == 10)))
+                    newBox.innerHTML += " ↓";
                 newBox.className += " red";
             }
         } else {
-            newBox.innerHTML += " X";
+            if(!(info[0] === "Nokk" && i === 11))
+                newBox.innerHTML += " X";
             newBox.className += " red";
         }
         
         newDiv.appendChild(newBox);
     })
     divElement.appendChild(newDiv);
+
+    document.getElementById("input").value = "";
 
     if(userInput === answer){
         console.log("Yipe!!!");
