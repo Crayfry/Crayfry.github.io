@@ -23,7 +23,9 @@ function onGuess(){
         if(value === answerInfo[i]){
             newBox.innerHTML += "\n✓";
         }
-        else if(!(i === 4 || i === 5 || i === 6)){
+        else if(i === 2){
+            
+        } else if(!(i === 5 || i === 6 || i === 7)){
             newBox.innerHTML += "\nX";
         } else if(value < answerInfo[i]){
             newBox.innerHTML += "\n↑";
