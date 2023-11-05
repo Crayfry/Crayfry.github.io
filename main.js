@@ -20,18 +20,33 @@ function onGuess(){
         const newBox = document.createElement("div");
         newBox.className = "box";
         newBox.innerHTML = value;
-        if(value === answerInfo[i]){
-            newBox.innerHTML += "\n✓";
-        }
-        else if(i === 2){
-            
-        } else if(!(i === 5 || i === 6 || i === 7)){
-            newBox.innerHTML += "\nX";
-        } else if(value < answerInfo[i]){
-            newBox.innerHTML += "\n↑";
+        if(value === answerInfo[i]) {
+            newBox.innerHTML += " ✓";
+            newBox.className += " green";
+        } else if(i === 2) {
+            if(value.indexOf(",") > 0 && answerInfo[i].includes(value.substring(0, value.indexOf(",")))) {
+                newBox.innerHTML += " ~";
+                newBox.className += " yellow";
+            } else if (value.indexOf(",") > 0 && answerInfo[i].includes(value.substring(value.indexOf(",")))){
+                newBox.innerHTML += " ~";
+                newBox.className += " yellow";
+            } else {
+                newBox.innerHTML += " X";
+                newBox.className += " red";
+            }
+        } else if (i === 5 || i === 6 || i == 7) {
+            if(value < answerInfo[i]) {
+                newBox.innerHTML += " ↑";
+                newBox.className += " red";
+            } else {
+                newBox.innerHTML += " ↓";
+                newBox.className += " red";
+            }
         } else {
-            newBox.innerHTML += "\n↓";
+            newBox.innerHTML += " X";
+            newBox.className += " red";
         }
+        
         newDiv.appendChild(newBox);
     })
     divElement.appendChild(newDiv);

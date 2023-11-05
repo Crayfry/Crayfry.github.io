@@ -8,16 +8,19 @@ body {
 
 input {
     border: unset;
-    background: darkgrey;
-    padding: 0.5em;
+    background: lightgray;
+    padding: 1.0em;
+    width: 100%;
+    min-height: 48px;
 }
 
 .guessbutton {
     border: unset;
     background: rgb(84, 191, 226);
-    padding: 0.5em;
+    padding: 1.0em;
     color: white;
     cursor: pointer;
+    min-height: 48px;
 }
 
 .autocompletelist {
@@ -38,17 +41,17 @@ input {
     border-top: unset;
 }
 
-.autocompletelist li:hover {
-    background: #f3f3f3;
-}
-
 .autocompletelist button {
     border: unset;
-    background: unset;
+    background: white;
     cursor: pointer;
     display: block;
     width: 100%;
-    padding: 0.5em;
+    padding: 1.0em;
+}
+
+.autocompletelist button:hover {
+    background: #00e1ff;
 }
 
 .box {
@@ -61,6 +64,18 @@ input {
     flex-direction:row;
     align-items: center;
     justify-content: center;
+}
+
+.green {
+    background-color: lime;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.red {
+    background-color: red;
 }
 
 .center {
