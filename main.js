@@ -22,36 +22,53 @@ function onGuess(){
         if(i === 5)
             newBox.innerHTML += "Year ";
         newBox.innerHTML += value;
-        if(!(info[0] === "Nokk") && i === 8)
+        if(i === 9)
             newBox.innerHTML += " m";
-        if(!(info[0] === "Nokk") && i === 9)
+        if(i === 10)
             newBox.innerHTML += " kgs";
         if(value === answerInfo[i]) {
             newBox.innerHTML += " ✓";
             newBox.className += " green";
-        } else if(i === 2) {
-            if(value.indexOf(",") > 0 && answerInfo[i].includes(value.substring(0, value.indexOf(",")))) {
+        } else if(i === 2 || i === 6) {
+            let listCommas = [];
+
+            for(let j = 0; j < value.length; j++){
+                if(value[j] == ",")
+                    listCommas.push(j);
+            }
+            console.log(listCommas);
+            let lastIndex = 0;
+            let close = false;
+            for(let j = 0; j < listCommas.length; j++){
+                console.log(value.substring(lastIndex, listCommas[j]));
+                if(answerInfo[i].includes(value.substring(lastIndex, listCommas[j]))){
+                    newBox.innerHTML += " ~";
+                    newBox.className += " yellow";
+                    close = true;
+                }
+                lastIndex = listCommas[j] + 2;
+            }
+            console.log(value.substring(lastIndex));
+            if(answerInfo[i].includes(value.substring(lastIndex))){
                 newBox.innerHTML += " ~";
                 newBox.className += " yellow";
-            } else if (value.indexOf(",") > 0 && answerInfo[i].includes(value.substring(value.indexOf(",")))){
-                newBox.innerHTML += " ~";
-                newBox.className += " yellow";
-            } else {
+                close = true;
+            }
+
+            if(!close){
                 newBox.innerHTML += " X";
                 newBox.className += " red";
             }
-        } else if (i === 5 || i === 8 || i === 9 || i == 10) {
+        } else if (i === 5 || i === 9 || i === 10 || i == 11) {
             if(value < answerInfo[i]) {
                 newBox.innerHTML += " ↑";
                 newBox.className += " red";
             } else {
-                if(!(info[0] === "Nokk" && (i === 8 || i === 9 || i == 10)))
                     newBox.innerHTML += " ↓";
                 newBox.className += " red";
             }
         } else {
-            if(!(info[0] === "Nokk" && i === 11))
-                newBox.innerHTML += " X";
+            newBox.innerHTML += " X";
             newBox.className += " red";
         }
         
