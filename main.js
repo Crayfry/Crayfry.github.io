@@ -36,11 +36,9 @@ function onGuess(){
                 if(value[j] == ",")
                     listCommas.push(j);
             }
-            console.log(listCommas);
             let lastIndex = 0;
             let close = false;
             for(let j = 0; j < listCommas.length; j++){
-                console.log(value.substring(lastIndex, listCommas[j]));
                 if(answerInfo[i].includes(value.substring(lastIndex, listCommas[j]))){
                     newBox.innerHTML += " ~";
                     newBox.className += " yellow";
@@ -48,7 +46,6 @@ function onGuess(){
                 }
                 lastIndex = listCommas[j] + 2;
             }
-            console.log(value.substring(lastIndex));
             if(answerInfo[i].includes(value.substring(lastIndex))){
                 newBox.innerHTML += " ~";
                 newBox.className += " yellow";
