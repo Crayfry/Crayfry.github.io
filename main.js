@@ -19,17 +19,15 @@ function onGuess(){
     info.forEach((value, i) => {
         const newBox = document.createElement("div");
         newBox.className = "box";
-        if(i === 5)
+        if(i === 4)
             newBox.innerHTML += "Year ";
+
         newBox.innerHTML += value;
-        if(i === 9)
-            newBox.innerHTML += " m";
-        if(i === 10)
-            newBox.innerHTML += " kgs";
+
         if(value === answerInfo[i]) {
             newBox.innerHTML += " ✓";
             newBox.className += " green";
-        } else if(i === 2 || i === 6) {
+        } else if(i === 1 || i === 5) {
             let listCommas = [];
 
             for(let j = 0; j < value.length; j++){
@@ -56,7 +54,7 @@ function onGuess(){
                 newBox.innerHTML += " X";
                 newBox.className += " red";
             }
-        } else if (i === 5 || i === 9 || i === 10 || i == 11) {
+        } else if (i === 4) {
             if(value < answerInfo[i]) {
                 newBox.innerHTML += " ↑";
                 newBox.className += " red";
